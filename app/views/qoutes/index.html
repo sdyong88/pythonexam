@@ -1,0 +1,47 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/styles.css')}}">
+  </head>
+  <body>
+    <div id ="wrapper">
+    {% with messages = get_flashed_messages(with_categories = true) %}
+        {% if messages %}
+        <ul class=flashes>
+            {% for category, message in messages %}
+                <li class="{{category}}">{{message}}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    {% endwith %}
+
+    	<div id ="registration">
+    		<h3>Registration</h3>
+    		<form action="users/create" method="POST">
+                <ul style="list-style-type:none">
+        			<li>Name:<input type="text" name="name"></li>
+        			<li>Alias:<input type="text" name="alias"></li>
+        			<li>Email:<input type="text" name="email"></li>
+        			<li>Password:<input type="text" name="password"></li>
+        			<li>Confirm PW:<input type="text" name="confirm_pw"></li>
+                    <li>Date of Birth:<input type="date" name="birthdate"></li>
+        			<li><input type="submit" name="submit"></li>
+                </ul>
+    		</form>
+    		
+    	</div>
+    	<!-- Ends the registration form -->
+
+    	<div id= "login">
+         <hr>
+    		<h3>Login</h3>
+
+    			<form action="/user/login" method="POST">
+    				Email:<input type="text" name="log_email">
+    				Password:<input type="text" name="password">
+    				<input type="submit" name="submit">
+    			</form>
+    		
+    	</div>
+    </div><!-- End of the wrapper -->
+  </body>
+</html>

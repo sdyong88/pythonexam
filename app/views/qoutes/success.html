@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Success</title>
+</head>
+<body>
+	<div id= "wrapper">
+		
+		
+		<h3>Success! Welcome {{users.name}}</h3>
+		{{users.user_id}}
+
+		<p>Succesffully registered ( or logged in)!</p>
+		<a href="/logout">Logout</a>
+		<div id="main">
+			<div id="left_main">
+				<h4>Qoutable Qoutes!</h4>
+
+				
+				{% for show in shows %}
+
+					<h5>{{show.qoute}}</h5>
+					<p>{{show.author}}</p>
+					<p>Posted by <a href="/user/{{show.user_id}}">{{show.user_id}}</a></p>
+
+					<form action="add_favorite/{{show.id}}" method="POST">
+						<input type="submit" name="submit" value="Add To Favorite">
+					</form>
+					
+					<hr>
+						
+				{% endfor %}
+				
+				
+			</div>
+			<!-- This will end the left main -->
+			<div id="right_main">
+				<div id="favorite">
+				<h4>Your Favorites!</h4>
+					{{favorites}}
+				</div>
+
+
+
+
+				<div id="contribute">
+					<form action="/addqoute/{{users.user_id}}" method="POST">
+						Qouted By :<input type="text" name="author">
+						Message:<input type="text" name="qoute">
+						<input type="submit" name="submit">
+						
+					</form>
+				</div>
+				
+			</div>
+			<!-- This will end the right main -->
+
+			
+		</div>
+			<!-- This will end the main body -->
+
+	
+	</div>
+	<!-- This will end the wrapper -->
+</body>
+</html>

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Show the user</title>
+</head>
+<body>
+	<p>User {{qoutes[0]['name']}} posts</p>
+	<a href="/success">Dashboard</a> | <a href="/logout">Logout</a>
+	{% for qoute in qoutes %}
+	<p>Qoute: {{qoute.qoute}}</p>
+	<p>Author:{{qoute.author}}</p>
+	{% endfor %}
+
+</body>
+</html>
