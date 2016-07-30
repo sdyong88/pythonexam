@@ -1,6 +1,8 @@
+CREATE DATABASE  IF NOT EXISTS `pythonbeltdb` /*!40100 DEFAULT CHARACTER SET utf8 */;
+USE `pythonbeltdb`;
 -- MySQL dump 10.13  Distrib 5.7.9, for osx10.9 (x86_64)
 --
--- Host: 127.0.0.1    Database: qoutesdb
+-- Host: 127.0.0.1    Database: pythonbeltdb
 -- ------------------------------------------------------
 -- Server version	5.5.42
 
@@ -25,13 +27,13 @@ DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) DEFAULT NULL,
-  `alias` varchar(255) DEFAULT NULL,
+  `username` varchar(255) DEFAULT NULL,
   `email` varchar(255) DEFAULT NULL,
   `password` varchar(255) DEFAULT NULL,
-  `birthdate` date DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -40,7 +42,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'Steven','Steven','sdyong@gmail.com','$2b$12$kB8i9un8.BoWo3804uPVQ.gaBrQ.3uhRpbceP6CQfU0rQazMCqDky','2001-12-11','2016-07-22 09:41:12'),(2,'admin','admin','admin@gmail.com','$2b$12$0G0p6ax1Y8TFg3.Qe1yZUOxmgSYsSNZskbxfsD17jGRif5E1Ya/pe','1111-11-11','2016-07-22 09:53:58'),(3,'mickey','mouse','mouse@gmail.com','$2b$12$T1wJ2uI.DIeHvYFq1U/Jde2KsfRAJy2y3WY4VTfhA9gyr5LhVARCS','1142-11-12','2016-07-22 13:36:29'),(4,'Daffy','Duck','daffy@gmail.com','$2b$12$vmWRdflFb2BS6Vodc1lI0u39qrwE3zRmkNQDjv93i2Mom9.o7FnKq','1212-12-12','2016-07-22 20:59:32'),(5,'Mini','Mouse','mini@gmail.com','$2b$12$7AKdy6uwMf21e6IT2n8QnO3k.ogdv3gNLq4lLBMd09D1kUPAmupBm','1212-04-14','2016-07-22 20:59:48'),(6,'Goofy','goofy','goofy@gmail.com','$2b$12$xfdl1dDASlCxZ36UkqaK6.UhMpdezYkV9PhCtU3wO92vruqsLrmvC','1212-12-12','2016-07-22 21:00:19');
+INSERT INTO `users` VALUES (1,'Steven','Steven','steven@gmail.com','$2b$12$tT6i2fZOGuNEXzxGpNjWMODxLt5DQ/eOpsANNMqCZEkvr.fFXXfqa','2016-07-30 11:35:17','2016-07-30 11:35:17'),(2,'Steven','Steven','steven@gmail.com','$2b$12$Q20YW9B2jomCKQnDCXwvUeT8g7JbVmRCEGTqhxQqltn5ZNjErSDbS','2016-07-30 11:35:28','2016-07-30 11:35:28'),(3,'Melissa','Melissa','melissa@gmail.com','$2b$12$HTucSf2F8VqKKHp1dVsRPuY1FzAS4LLBeKnk/1oyWYyTvi7grrj8W','2016-07-30 13:02:17','2016-07-30 13:02:17'),(4,'Kevin','Kevin','kevin@gmail.com','$2b$12$Z6ctrktXmupcXgn1JKCcG.Lctj2l6WEF2LJ3j/f5Pf0zXlM5zjRm2','2016-07-30 14:37:41','2016-07-30 14:37:41');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -53,4 +55,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-07-26  7:47:35
+-- Dump completed on 2016-07-30 14:57:31

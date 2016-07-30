@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Success</title>
+</head>
+<body>
+	<div id= "wrapper">
+		
+		
+		<h3>Welcome {{user.name}}!</h3>
+		
+		<a href="/logout">Logout</a>
+
+
+		<h4>Your Trip Schedule</h4>
+		<div id = "schedule">
+			<div style="overflow-x:auto;">
+  				<table>
+  					<tr>
+	  					<th>Destination</th>
+	  					<th>Travel Start Date</th>
+	  					<th>Travel End Date</th>
+	  					<th>Plan</th>
+	  				</tr>
+	  				{% for mytri in mytrip %}
+	  				<tr>
+	  					<th><a href="#">{{mytri.destination}}</a></th>
+	  					<th>{{mytri.start}}</th>
+	  					<th>{{mytri.finish}}</th>
+	  					<th>{{mytri.description}}</th>
+	  				</tr>
+	  				{%endfor%}
+
+	  		  	</table>
+  		</div>
+		</div>
+		<br>
+		<br>
+
+
+		<h4>Other User's Travel Plans</h4>
+		<div id ="othertrips">
+			<div style="overflow-x:auto;">
+  				<table>
+  					<tr>
+	  					<th>Name</th>
+	  					<th>Destination</th>
+	  					<th>Travel Start</th>
+	  					<th>Travel End</th>
+	  					<th>Do you want to Join?</th>
+	  				</tr>
+	  			{% for trip in trips %}
+	  				<tr>
+	  					<th>{{trip.name}}</th>
+	  					<th><a href="/destination/{{trip.trip_id}}">{{trip.destination}}</th>
+	  					<th>{{trip.start}}</th>
+	  					<th>{{trip.finish}}</th>
+	  					<th>
+		  				<form action="/join/{{trip.trip_id}}" method="POST">
+		  					<input type="submit" name="submit" value="Join Trip">
+		  				</form></th>
+	  				</tr>
+	  			{% endfor %}
+  				</table>
+  		<br>
+  		<br>
+  		<a href="/addtrip">Add Travel Plan</a>
+  		</div>
+		</div>
+
+
+		
+			<!-- This will end the right main -->
+			<!-- This will end the main body -->
+
+	
+	</div>
+	<!-- This will end the wrapper -->
+</body>
+</html>

@@ -7,7 +7,3 @@ class Qoutes(Controller):
     
         self.load_model('QoutesModel')
         self.db = self._app.db
-
-    def success(self):
-    	show = self.models['QoutesModel.py'].show_qoutes()
-        return self.load_view('qoutes/success.html', shows = show)

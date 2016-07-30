@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<a href="/success">Dashboard</a> | <a href="/logout">Logout</a>
+	
+	{% for info in infos %}
+	<ul>
+		<li>Planned By: {{info.username}}</li>
+		<li>Description:{{info.description}}</li>
+		<li>Travel Date From:{{info.start}}</li>
+		<li>Travel Date To:{{info.finish}}</li>
+	</ul>
+
+	{%endfor%}
+
+	Others Users" joining the trip:
+	{% for join in joins %}
+	<ul>
+		<li>{{join.username}}</li>
+	</ul>
+	{% endfor %}
+	
+</body>
+</html>

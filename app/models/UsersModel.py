@@ -25,8 +25,6 @@ class UsersModel(Model):
             errors.append('Password needs be atleast 8 characters long**')
         elif info['password'] != info['confirm_pw']:
             errors.append('Password and Confirmation do not match! **')
-        if not info['birthdate']:
-        	errors.append('D.O.B was not selected')
         # else:
         #     errors.append('Success!')
         if errors:
@@ -34,13 +32,12 @@ class UsersModel(Model):
         else:
             password = info['password']
             hashed_pw = self.bcrypt.generate_password_hash(password)
-            insert_user = "INSERT INTO users (name, alias, email, password, birthdate, created_at) VALUES (:name, :alias, :email, :pw_hash, :birthdate, NOW()) "
+            insert_user = "INSERT INTO users (name, username, email, password,created_at,updated_at) VALUES (:name, :alias, :email, :pw_hash,NOW(), NOW()) "
             data = {
                 "name": info["name"],
                 "alias": info["alias"],
                 "email": info['email'],
-                "pw_hash": hashed_pw,
-                "birthdate": info['birthdate']
+                "pw_hash": hashed_pw
             }
             self.db.query_db(insert_user,data)
 
@@ -73,40 +70,7 @@ class UsersModel(Model):
             errors.append('Email and/or Password does not match')
             return { "status": False, "errors": errors }
 
-    def add_qoute(self,info):
-    	query = "INSERT INTO qoutes(qoute, author, created_at, user_id) VALUES (:qoute, :author, NOW(), :user_id)"
-
-    	data = {
-    		'qoute':info['qoute'],
-    		'author': info['author'],
-    		'user_id': info['user_id']
-    	}
-    	self.db.query_db(query, data)
-
-    def show_favorite(self,info):
- 		query = "SELECT *,favorites.id as favorite_id FROM favorites LEFT JOIN qoutes ON qoutes.id = favorites.qoute_id WHERE favorites.user_id = :users_id"
- 		data = {'users_id': info}
- 		return self.db.query_db(query,data)
-
-    def insert(self, info):
- 		query = "INSERT INTO favorites (qoute_id, user_id) VALUES (:qoute_id, :user_id)"
- 		data = {'qoute_id': info['id'], 'user_id': info['user_id']}
- 		self.db.query_db(query,data)
-
-    def delete(self,info):
-        query = "DELETE FROM favorites WHERE favorites.id = :qoute_id"
-        data = {'qoute_id': info['id']}
-        self.db.query_db(query,data)
-
-    def show(self, info):
- 		query = "SELECT * FROM users LEFT JOIN qoutes ON users.id = qoutes.user_id WHERE users.id = :id"
- 		data = { 'id': info}
- 		return self.db.query_db(query,data)
-
-    def show_qoutes(self):
- 		query = "SELECT * FROM qoutes LEFT JOIN users ON users.id = qoutes.user_id"
- 		return self.db.query_db(query)
-
+    
 
 
 
